@@ -9,8 +9,9 @@ const PORT = 5000
 const app = express()
 
 app.use(cors())
+app.use(express.json())
 
-app.get('/get-messages', () => {
+app.get('/get-messages', (req, res) => {
   emitter.once('newMessage', (message) => {
     res.json(message)
   })
